@@ -13,8 +13,7 @@ namespace ComicBookGallery.Controllers
         // Return type is ActionResult
         public ActionResult Detail()
         {
-
-            return new Content("Hello from the comic books controller!")
+            return View();
         }
     }
 }
