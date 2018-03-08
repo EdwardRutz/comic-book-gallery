@@ -6,12 +6,15 @@ using System.Web.Mvc;
 
 namespace ComicBookGallery.Controllers
 {
+    // Create a controller
     // class inherits from the Controller base class
     public class ComicBooksController : Controller
     {
-        public string Detail()
+        // Return type is ActionResult
+        public ActionResult Detail()
         {
-            return "Hello from the comic books controller!";
+
+            return new Content("Hello from the comic books controller!")
         }
     }
 }
