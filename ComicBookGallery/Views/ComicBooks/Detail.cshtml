@@ -31,8 +31,22 @@
         <h5>Description</h5>
         <div>@Html.Raw(description)</div>
 
-        <h5>Artist</h5>
-        <div>@artists</div>
+        <!--
+            - Loop over the artist array and write each individual value to the view
+            - if statement shows artist info only if the artists array has elements
+        -->
+        @if (artists.Length > 0)
+        {
+            <h5>Artists</h5>
+            <div>
+                <ul>
+                    @foreach(var artist in artists)
+                    {
+                        <li>*@artist</li>
+                    }
+                </ul>
+            </div>
+        }
     </div>
 </body>
 </html>
