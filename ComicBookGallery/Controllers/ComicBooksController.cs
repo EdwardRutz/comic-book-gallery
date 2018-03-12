@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComicBookGallery.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,24 +11,31 @@ namespace ComicBookGallery.Controllers
     // class inherits from the Controller base class
     public class ComicBooksController : Controller
     {
+
         // Return type is ActionResult
         public ActionResult Detail()
         {
-            //Comic Book Data
-            //Switch from using variables to properties(ViewBag)
-            ViewBag.SeriesTitle = "The Amazing Spiderman";
-            ViewBag.IssueNumber = 700;
-            ViewBag.Description = "<p>Final issue! Witness the final hours of Doctor Octopus's life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>";
-            ViewBag.Artists = new string[]
+            //Substantiate a comic book model object
+            //Set model instance property values with object initializer syntax (braces)
+            var comicBook = new ComicBook()
             {
-                "Script: Dan Slott",
-                "Pencils: Humberto Ramos",
-                "Inks: Victor Olazaba",
-                "Colors: Edgar Delgado",
-                "Letters: Chris Eliopoulos"
+                SeriesTitle = "The Amazing Spiderman",
+                IssueNumber = 700,
+                DescriptionHtml = "<p>Final issue! Witness the final hours of Doctor Octopus's life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>",
+                //change the array element data type from string to artist
+                //Instantiate an Artists array
+                //Add an artist model instance with empty name and role properties for each element added to the array (5 elements).
+                Artists = new Artist[]
+                {
+                    new Artist() { Name = "Dan Slott", Role = "Script" },
+                    new Artist() { Name = "Humberto Ramos", Role = "Pencils" },
+                    new Artist() { Name = "Victor Olazaba", Role = "Inks" },
+                    new Artist() { Name = "Edgar Delgado", Role = "Colors" },
+                    new Artist() { Name = "Chris Eliopoulos", Role = "Letters" },
+                }
             };
-
-            return View();
+            
+            return View(comicBook);
         }
     }
 }

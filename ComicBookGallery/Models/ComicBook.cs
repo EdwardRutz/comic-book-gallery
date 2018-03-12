@@ -14,10 +14,10 @@ namespace ComicBookGallery.Models
         public Artist[] Artists { get; set; }       //References Artist.cs model
         public bool Favorite { get; set; }      //Is comic a favorite?
 
-        //Uniquely identify and display a comic book
+        //Uniquely identify comic book
         public string DisplayText
         {
-            //Retrun a string that is a combination of series title and issue number
+            //Return a string that is a combination of series title and issue number
             //Make this property read-only by not defining a setter
             get
             {
