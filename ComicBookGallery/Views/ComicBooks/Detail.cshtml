@@ -10,26 +10,43 @@
     ViewBag.Title = Model.DisplayText;
 }
 
-<h1>@Model.SeriesTitle</h1>
-<h2>Issue #@Model.IssueNumber</h2>
+<h2>@Model.DisplayText</h2>
+<!--Using Bootstrap, well class gives an inset effect -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="well">
+            <h5><label>Series Title:  </label>  @Model.SeriesTitle</h5>
+            <h5><label>Issue #:</label>  @Model.IssueNumber</h5>
+            <h5><label>Favorite:  </label>  @(Model.Favorite ? "Yes" : "No")</h5>
 
-<h5>Description:</h5>
-<div>@Html.Raw(Model.DescriptionHtml)</div>
-
-<!--
-    - Loop over the artist array and write each individual value to the view
-    - if statement shows artist info only if the artists array has elements
--->
-@if (Model.Artists.Length > 0)
-{
-<h5>Artists:</h5>
-<div>
-    <ul>
-        @foreach (var artist in Model.Artists)
+            <!--
+                - Loop over the artist array and write each individual value to the view
+                - if statement shows artist info only if the artists array has elements
+            -->
+            @if (Model.Artists.Length > 0)
             {
-        <li>@artist.Role: @artist.Name</li>
+                <h5>Artists:</h5>
+                <div>
+                    <ul>
+                        @foreach (var artist in Model.Artists)
+                         {
+                        <li>@artist.Role: @artist.Name</li>
+                         }
+                    </ul>
+                </div>
             }
-    </ul>
-</div>
-}
 
+        </div>
+        <h5>Description:</h5>
+        <div>@Html.Raw(Model.DescriptionHtml)</div>
+
+    </div>
+
+    <div class="col-md-6">
+        <img src="/Images/the-amazing-spider-man-700.jpg"
+             alt="@Model.DisplayText" class="img-responsive"/>
+
+         @*<img src="/Images/@Model.GetCoverImageFileName()"
+         alt="@Model.DisplayText" class="img-responsive"/>*@
+    </div>
+</div>

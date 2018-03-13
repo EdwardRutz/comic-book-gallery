@@ -28,14 +28,14 @@ namespace ComicBookGallery.Models
         //Display cover image
         //Naming convention for cover images is series-title-issuenumber.jpg
         //Read only since it does not contain a setter
+
         public string CoverImageFileName
         {
             get
             {
                 //Replace spaces in file name with hyphens
                 //Make lowercase
-                return SeriesTitle.Replace(" ", "-")
-                    .ToLower() + "-" + IssueNumber + ".jpg";
+                 return SeriesTitle.Replace(" ", "-").ToLower() + "-" + IssueNumber + ".jpg";
             }
         }
     }
