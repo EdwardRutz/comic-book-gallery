@@ -35,7 +35,10 @@ namespace ComicBookGallery.Models
             {
                 //Replace spaces in file name with hyphens
                 //Make lowercase
-                 return SeriesTitle.Replace(" ", "-").ToLower() + "-" + IssueNumber + ".jpg";
+                return SeriesTitle.Replace(" ", "-").ToLower() + "-" + IssueNumber + ".jpg";
+                //return SeriesTitle + "-" + IssueNumber + ".jpg";
+
+                //return SeriesTitle.Replace(" ", "-").ToLower() + "-" + IssueNumber + ".jpg";
             }
         }
     };
