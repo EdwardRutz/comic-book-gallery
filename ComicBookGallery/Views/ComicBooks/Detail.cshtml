@@ -43,10 +43,10 @@
     </div>
 
     <div class="col-md-6">
-        <img src="/Images/the-amazing-spider-man-700.jpg"
-             alt="@Model.DisplayText" class="img-responsive"/>
+        @*<img src="/Images/the-amazing-spider-man-700.jpg"
+             alt="@Model.DisplayText" class="img-responsive"/>*@
 
-         @*<img src="/Images/@Model.GetCoverImageFileName()"
-         alt="@Model.DisplayText" class="img-responsive"/>*@
+         <img src="/Images/@Model.CoverImageFileName()"
+         alt="@Model.DisplayText" class="img-responsive"/>
     </div>
 </div>

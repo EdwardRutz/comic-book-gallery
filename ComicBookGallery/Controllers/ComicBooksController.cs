@@ -1,4 +1,5 @@
-﻿using ComicBookGallery.Models;
+﻿using ComicBookGallery.Data;
+using ComicBookGallery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,30 +12,29 @@ namespace ComicBookGallery.Controllers
     // class inherits from the Controller base class
     public class ComicBooksController : Controller
     {
+        //Private field names typically start with an underscore
+        private ComicBookRepository _comicBookRepository = null;  //Private field for repository
+
+        //Create an instance of the repository
+        //Constructors initialize instance members
+        //Constructor names are the same as the class names and do not have a return type
+
+        public ComicBooksController ()
+        {
+            _comicBookRepository = new ComicBookRepository();
+        }
 
         // Return type is ActionResult
-        public ActionResult Detail()
+        public ActionResult Detail(int? id)     //nullable type
         {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
             //Substantiate a comic book model object
             //Set model instance property values with object initializer syntax (braces)
-            var comicBook = new ComicBook()
-            {
-                SeriesTitle = "The Amazing Spiderman",
-                IssueNumber = 700,
-                DescriptionHtml = "<p>Final issue! Witness the final hours of Doctor Octopus's life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>",
-                //change the array element data type from string to artist
-                //Instantiate an Artists array
-                //Add an artist model instance with empty name and role properties for each element added to the array (5 elements).
-                Artists = new Artist[]
-                {
-                    new Artist() { Name = "Dan Slott", Role = "Script" },
-                    new Artist() { Name = "Humberto Ramos", Role = "Pencils" },
-                    new Artist() { Name = "Victor Olazaba", Role = "Inks" },
-                    new Artist() { Name = "Edgar Delgado", Role = "Colors" },
-                    new Artist() { Name = "Chris Eliopoulos", Role = "Letters" },
-                }
-            
-            };
+            var comicBook = _comicBookRepository.GetComicBook(id.Value);
             
             return View(comicBook);
         }
