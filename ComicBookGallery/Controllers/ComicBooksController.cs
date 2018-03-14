@@ -24,6 +24,13 @@ namespace ComicBookGallery.Controllers
             _comicBookRepository = new ComicBookRepository();
         }
 
+        //Index action method to get a list of comics
+        public ActionResult Index()
+        {
+            var comicBooks = _comicBookRepository.GetComicBooks();
+            return View(comicBooks);    //passes comicbook array into the view method
+        }
+
         // Return type is ActionResult
         public ActionResult Detail(int? id)     //nullable type
         {
@@ -38,5 +45,5 @@ namespace ComicBookGallery.Controllers
             
             return View(comicBook);
         }
-    }
+    };
 }
